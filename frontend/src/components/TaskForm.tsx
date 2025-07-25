@@ -48,8 +48,13 @@ export default function TaskForm({ onTaskAdded }: TaskFormProps) {
             setTitle('');
             setDescription('');
 
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err) {
+            // This is the fix: Check if 'err' is an Error object before using its message property
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('An unknown error occurred');
+            }
         }
     };
 

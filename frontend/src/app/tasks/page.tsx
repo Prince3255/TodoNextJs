@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/navigation";
-
 import TaskForm from "../../components/TaskForm";
 
 interface Task {
@@ -25,14 +24,23 @@ export default function TasksPage() {
           const res = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/get/tasks`,
             {
+              method: "GET",
               headers: { Authorization: `Bearer ${token}` },
             }
           );
-          if (!res.ok) throw new Error("Failed to fetch tasks.");
+          if (!res.ok)
+            throw new Error(
+              "Failed to fetch tasks. Your session might have expired."
+            );
           const data = await res.json();
           setTasks(data);
-        } catch (err: any) {
-          setError(err.message);
+        } catch (err) {
+          // This is the fix: Check if 'err' is an Error object before using its message property
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("An unknown error occurred");
+          }
         }
       }
     };
