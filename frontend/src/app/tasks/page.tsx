@@ -35,9 +35,8 @@ export default function TasksPage() {
           const data = await res.json();
           setTasks(data);
         } catch (err) {
-          // This is the fix: Check if 'err' is an Error object before using its message property
           if (err instanceof Error) {
-            setError(err.message);
+            setError(err.message || "An error occurred.");
           } else {
             setError("An unknown error occurred");
           }
