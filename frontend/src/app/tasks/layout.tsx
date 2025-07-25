@@ -4,7 +4,12 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function TasksLayout({ children }) {
+interface TasksLayoutProps {
+  children: React.ReactNode;
+}
+
+
+export default function TasksLayout({ children }: TasksLayoutProps) {
     const { token, loading } = useAuth();
     const router = useRouter();
 
