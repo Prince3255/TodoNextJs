@@ -36,7 +36,7 @@ export default function TasksPage() {
           setTasks(data);
         } catch (err) {
           if (err instanceof Error) {
-            setError(err.message || "An error occurred.");
+            setError("An error occurred.");
           } else {
             setError("An unknown error occurred");
           }

@@ -50,7 +50,7 @@ export default function TaskForm({ onTaskAdded }: TaskFormProps) {
 
         } catch (err) {
             if (err instanceof Error) {
-                setError(err.message || 'Failed to add task');
+                setError('Failed to add task');
             } else {
                 setError('An unknown error occurred');
             }
