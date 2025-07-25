@@ -21,7 +21,7 @@ export default function RegisterPage() {
             });
             if (!res.ok) {
                 const data = await res.json();
-                throw new Error(data.message || 'Registration failed');
+                throw new Error('Registration failed');
             }
             alert('Registration successful! Please log in.');
             router.push('/login');

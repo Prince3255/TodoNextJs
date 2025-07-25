@@ -40,7 +40,7 @@ export default function TaskForm({ onTaskAdded }: TaskFormProps) {
 
             if (!res.ok) {
                 const data = await res.json();
-                throw new Error(data.message || 'Failed to add task');
+                throw new Error('Failed to add task');
             }
 
             const newTask = await res.json();
