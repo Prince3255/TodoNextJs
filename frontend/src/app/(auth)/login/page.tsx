@@ -29,7 +29,7 @@ export default function LoginPage() {
             login(token);
             router.push('/tasks');
         } catch (err) {
-            setError(err?.message || 'Invalid credentials');
+            setError('Invalid credentials');
         }
     };
 

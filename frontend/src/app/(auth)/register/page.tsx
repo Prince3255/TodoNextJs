@@ -26,7 +26,7 @@ export default function RegisterPage() {
             alert('Registration successful! Please log in.');
             router.push('/login');
         } catch (err) {
-            setError(err?.message || 'Registration failed');
+            setError('Registration failed');
         }
     };
 
